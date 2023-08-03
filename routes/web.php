@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,5 +32,7 @@ Route::middleware('auth')->group(function () {
 Route::get('/users', function () {
     return view('index');
 });
+
+Route::get('/profil', [PostController::class, 'index']);
 
 require __DIR__.'/auth.php';
