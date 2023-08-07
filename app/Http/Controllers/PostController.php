@@ -7,17 +7,19 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    public function index () {
-        
+    public function index (Request $request) {
+        $user=$request->user();
         return view('/profil/profil', [
-            'posts' => Post::all()
+            'user' => $user,
+            'posts' => Post::where('id_user', $user->id)->get()
         ]);
     }
 
-    public function show (Post $post){
+    public function show (Post $post, Request $request){
 
         return view('/profil/article',[
-            'article'=> $post
+            'article'=> $post,
+            'user' => $request->user()
         ]);
     }
 }

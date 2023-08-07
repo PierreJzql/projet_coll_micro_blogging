@@ -11,5 +11,13 @@
     <p> {{$article->contenu}}</p>
     <img src="{{$article->image}}"/>
     <p> auteur : {{$article->id_user}} </p>
+
+    @foreach ($article->comments as $comment)
+        <div>{{$comment->content}}</div>
+        
+    @endforeach
+
+    <p>{{$user->id}}</p>
+
 </body>
 </html>
