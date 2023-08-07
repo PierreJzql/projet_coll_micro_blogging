@@ -11,6 +11,18 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                 </div>
+                <div class="p-6 text-red-900 ">
+                    <ul>
+                        @foreach ($posts as $post)
+                        <li class="text-center"> 
+                            <a href="posts/{{$post->id}}" >
+                            <img src="{{$post->image}}"/>
+                            titre : {{$post->titre}}
+                            </a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
         </div>
     </div>

@@ -22,4 +22,10 @@ class PostController extends Controller
             'user' => $request->user()
         ]);
     }
+
+    public function allPost () {
+        return view('dashboard',[
+           'posts'=>Post::all() 
+        ]);
+    }
 }

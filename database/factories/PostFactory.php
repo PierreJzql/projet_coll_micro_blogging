@@ -22,7 +22,7 @@ class PostFactory extends Factory
         return [
             'titre' => fake()->name(),
             'contenu' => fake()->sentence(),
-            'image' =>  fake()->imageUrl(),
+            'image' =>  'https://placekitten.com/640/360',
             'id_user' => fake()->numberBetween(1,10),
         ];
     }
