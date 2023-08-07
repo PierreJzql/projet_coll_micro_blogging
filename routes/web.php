@@ -33,6 +33,7 @@ Route::get('/users', function () {
     return view('index');
 });
 
-Route::get('/profil', [PostController::class, 'index']);
+Route::get('/profil', [PostController::class, 'index'])->name('profil.index');
+Route::get('/posts/{post}', [PostController::class, 'show']);
 
 require __DIR__.'/auth.php';

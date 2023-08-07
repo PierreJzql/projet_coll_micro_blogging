@@ -23,6 +23,7 @@ class PostFactory extends Factory
             'titre' => fake()->name(),
             'contenu' => fake()->sentence(),
             'image' =>  fake()->imageUrl(),
+            'id_user' => fake()->numberBetween(1,10),
         ];
     }
 }

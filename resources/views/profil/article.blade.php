@@ -4,14 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Profil page </title>
+    <title>Article</title>
 </head>
 <body>
-    <h1> nos posts </h1>
-    <ul>
-        @foreach ($posts as $post)
-            <li> <a href="posts/{{$post->id}}" >{{$post->titre}}</a></li>        
-        @endforeach
-    </ul>
+    <h1> {{$article->titre}}</h1>
+    <p> {{$article->contenu}}</p>
+    <img src="{{$article->image}}"/>
+    <p> auteur : {{$article->id_user}} </p>
 </body>
 </html>
