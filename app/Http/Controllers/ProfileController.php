@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
 
 class ProfileController extends Controller
 {
@@ -56,5 +57,19 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+     /**
+     * Update the user's profile information.
+     */
+    public function updateBio(ProfileUpdateRequest $request): RedirectResponse
+    {
+        
+        $var = $request->input('biography');
+        $user=$request->user();
+       User::where('id', $user->id)->update(['biography' => $var]);
+
+        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        
     }
 }
