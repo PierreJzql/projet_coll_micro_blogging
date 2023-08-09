@@ -34,5 +34,7 @@ Route::get('/users', function () {
 
 Route::get('/profil', [PostController::class, 'index'])->name('profil.index');
 Route::get('/posts/{post}', [PostController::class, 'show']);
+Route::get('/createpost', [PostController::class, 'create'])->name('createpost');
+Route::post('/createpost', [PostController::class, 'send'])->name('sendpost');
 
 require __DIR__.'/auth.php';

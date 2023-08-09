@@ -28,4 +28,36 @@ class PostController extends Controller
            'posts'=>Post::all() 
         ]);
     }
+
+    public function create (){
+        return view('createpost');
+    }
+
+    public function send(Request $request)
+    {
+        $titre = $request->input('titre');
+        $contenu = $request->input('contenu');
+        $image = $request->file('image');
+        $nomImg = $image->getClientOriginalName();
+        $pathImg = '../img/'.time().$nomImg;
+        move_uploaded_file($image, $pathImg);
+        $user=$request->user();
+
+
+
+        // $var = $request;
+        // dd($var);
+
+        $post = Post::create([
+            'titre' => $titre,
+            'contenu' => $contenu,
+            'image' => $pathImg,
+            'id_user' =>$user->id,
+
+        ]);
+        $post->save();
+
+        return redirect('dashboard');
+
+    }
 }
