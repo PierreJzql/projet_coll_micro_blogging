@@ -39,8 +39,8 @@ class PostController extends Controller
         $contenu = $request->input('contenu');
         $image = $request->file('image');
         $nomImg = $image->getClientOriginalName();
-        $pathImg = '../img/'.time().$nomImg;
-        move_uploaded_file($image, $pathImg);
+        $pathImg = 'img/'.time().$nomImg;
+        move_uploaded_file($image, '../public/'.$pathImg);
         $user=$request->user();
 
 
@@ -51,7 +51,7 @@ class PostController extends Controller
         $post = Post::create([
             'titre' => $titre,
             'contenu' => $contenu,
-            'image' => $pathImg,
+            'image' => '../'.$pathImg,
             'id_user' =>$user->id,
 
         ]);
